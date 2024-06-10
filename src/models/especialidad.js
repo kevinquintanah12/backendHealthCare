@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db/db2');
-const Enfermedad = require('./enfermedad');
+const sequelize2 = require('../db/db2');
 
-const Especialidad = sequelize.define('Especialidad', {
+const Especialidad = sequelize2.define('Especialidad', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -13,7 +12,5 @@ const Especialidad = sequelize.define('Especialidad', {
         allowNull: false,
     },
 });
-
-Especialidad.belongsToMany(Enfermedad, { through: 'EspecialidadEnfermedad' });
 
 module.exports = Especialidad;

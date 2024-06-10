@@ -1,5 +1,5 @@
 // models/user.js
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../db/db');
 
 const User = sequelize.define('User', {
@@ -20,6 +20,10 @@ const User = sequelize.define('User', {
     },
     edad: {
         type: DataTypes.INTEGER
+    },
+    foto: { // Campo para almacenar la URL de la imagen
+        type: DataTypes.STRING,
+        allowNull: true
     }
 });
 

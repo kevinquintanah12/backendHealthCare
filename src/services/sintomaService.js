@@ -1,7 +1,15 @@
 const sintomaRepository = require('../repositories/sintomaRepository');
 
-const saveSintoma = async (clave, descripcion) => {
-    return sintomaRepository.saveSintoma(clave, descripcion);
+const getSintomaByClave = async (clave) => {
+    return sintomaRepository.getSintomaByClave(clave);
 };
 
-module.exports = { saveSintoma };
+const getAllSintomas = async () => {
+    return sintomaRepository.getAllSintomas();
+};
+
+module.exports = { 
+    
+    getSintomaByClave,
+    getAllSintomas
+};

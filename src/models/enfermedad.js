@@ -1,8 +1,7 @@
-'use strict';
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db/db2');
+const sequelize2 = require('../db/db2');
 
-const Enfermedad = sequelize.define('Enfermedad', {
+const Enfermedad = sequelize2.define('Enfermedad', {
     idEnfermedad: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -47,7 +46,5 @@ const Enfermedad = sequelize.define('Enfermedad', {
         defaultValue: DataTypes.NOW
     }
 });
-
-Enfermedad.belongsToMany(Especialidad, { through: 'EspecialidadEnfermedad' });
 
 module.exports = Enfermedad;

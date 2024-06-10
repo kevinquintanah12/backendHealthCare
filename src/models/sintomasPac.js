@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db/db');
 
-const SintomasPac = sequelize.define('SintomasPac', {
+const sintomasPac = sequelize.define('SintomasPac', {
     idSintomaPac: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -18,8 +18,8 @@ const SintomasPac = sequelize.define('SintomasPac', {
     },
     idDiagnostico: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
 });
 
-module.exports = SintomasPac;
+module.exports = sintomasPac;

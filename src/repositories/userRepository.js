@@ -1,4 +1,3 @@
-// repositories/userRepository.js
 const User = require('../models/user');
 
 const saveUser = async (userData) => {
@@ -9,12 +8,18 @@ const getUserByEmail = async (email) => {
     return User.findOne({ where: { email } });
 };
 
-const getUserByEmailAndPassword = async (email, contraseña) => {
-    return User.findOne({ where: { email, contraseña } });
-};
-
 const getAllUsers = async () => {
     return User.findAll();
+};
+
+const updateUser = async (userId, updateData) => {
+    try {
+        await User.update(updateData, {
+            where: { id: userId }
+        });
+    } catch (error) {
+        throw new Error('Error al actualizar el usuario');
+    }
 };
 
 const saveResetToken = async (email, token, expirationDate) => {
@@ -54,8 +59,8 @@ const deleteResetToken = async (email) => {
 module.exports = {
     saveUser,
     getUserByEmail,
-    getUserByEmailAndPassword,
     getAllUsers,
+    updateUser,
     saveResetToken,
     getResetToken,
     updatePassword,

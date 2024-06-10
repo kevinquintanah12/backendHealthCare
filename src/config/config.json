@@ -1,34 +1,34 @@
 {
   "development": {
     "username": "postgres",
-    "password": "kevinh12",
-    "database": "asmaDB",
+    "password": "postgres",
+    "database": "healthcare1",
     "host": "localhost",
-    "port": 5433,
+    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "kevinh12",
-    "database": "asmaDB",
+    "password": "postgres",
+    "database": "healthcare1",
     "host": "localhost",
-    "port": 5433,
+    "port": 5432,
     "dialect": "postgres"
   },
-  "production": {
+  "db": {
     "username": "postgres",
-    "password": "kevinh12",
-    "database": "asmaDB",
+    "password": "postgres",
+    "database": "healthcare1",
     "host": "localhost",
-    "port": 5433,
+    "port": 5432,
     "dialect": "postgres"
   },
   "db2": {
     "username": "postgres",
-    "password": "kevinh12",
-    "database": "healthCare2",
+    "password": "postgres",
+    "database": "healthcare2",
     "host": "localhost",
-    "port": 5433,
+    "port": 5432,
     "dialect": "postgres"
   }
 }
