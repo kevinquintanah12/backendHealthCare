@@ -28,11 +28,32 @@ const deleteEnfermedad = async (id) => {
     return null;
 };
 
+
 const getEnfermedadByNombreOriginal = async (nombreOriginal) => {
-    return Enfermedad.findOne({
-        where: { nombreOriginal }
-    });
+    try {
+        
+        console.log(`Buscando enfermedad con nombre original: ${nombreOriginal}`);
+        const enfermedad = await Enfermedad.findOne({ where: { nombreOriginal } });
+        
+        console.log(enfermedad); // Agregar este console.log
+        if (enfermedad) {
+            return {
+                id: enfermedad.id,
+                nombreOriginal: enfermedad.nombreOriginal,
+                nombreEspañol: enfermedad.nombreEspañol,
+                descripcion: enfermedad.descripcion,
+                especialistasTratan: enfermedad.especialistasTratan,
+                clinicaTratante: enfermedad.clinicaTratante,
+                imagen: enfermedad.imagen
+            };
+        } else {
+            return null;
+        }
+    } catch (error) {
+        throw new Error('Error al buscar la enfermedad');
+    }
 };
+
 
 module.exports = {
     saveEnfermedad,

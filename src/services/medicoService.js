@@ -9,6 +9,11 @@ const saveMedico = async (medicoData) => {
     }
 };
 
+const getMedicoByEspecialidadId = async (especialidadId) => {
+    return medicoRepository.getMedicoByEspecialidadId(especialidadId);
+};
+
+
 const getMedicoById = async (id) => {
     try {
         const medico = await medicoRepository.getMedicoById(id);
@@ -62,5 +67,6 @@ module.exports = {
     getMedicoById,
     getAllMedicos,
     updateMedico,
-    deleteMedico
+    deleteMedico,
+    getMedicoByEspecialidadId
 };

@@ -1,4 +1,5 @@
 const enfermedadRepository = require('../repositories/enfermedadRepository');
+const Enfermedad = require('../models/enfermedad');
 
 const saveEnfermedad = async (enfermedadData) => {
     try {
@@ -23,9 +24,13 @@ const getEnfermedadById = async (id) => {
 };
 
 const getEnfermedadByNombreOriginal = async (nombreOriginal) => {
-    return Enfermedad.findOne({
-        where: { nombreOriginal }
-    });
+    try {
+        const enfermedad = await Enfermedad.findOne({ where: { nombreOriginal } });
+        return enfermedad; // Devolver directamente la enfermedad encontrada
+    } catch (error) {
+        console.error('Error al obtener la enfermedad:', error);
+        throw new Error('Error al buscar la enfermedad');
+    }
 };
 
 const getAllEnfermedades = async () => {

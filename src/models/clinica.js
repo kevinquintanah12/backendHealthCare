@@ -1,26 +1,40 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Clinica extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  Clinica.init({
-    nombre: DataTypes.STRING,
-    direccion: DataTypes.STRING,
-    latitud: DataTypes.NUMERIC,
-    longitud: DataTypes.NUMERIC
-  }, {
-    sequelize,
-    modelName: 'Clinica',
-  });
-  return Clinica;
+const { DataTypes } = require('sequelize');
+const sequelize2 = require('../db/db2'); // Asegúrate de que esta sea la instancia correcta de Sequelize
+
+const Clinica = sequelize2.define('Clinica', {
+  nombre: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  direccion: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  latitud: {
+    type: DataTypes.NUMERIC,
+    allowNull: false
+  },
+  longitud: {
+    type: DataTypes.NUMERIC,
+    allowNull: false
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  }
+});
+
+// Definir las asociaciones en otro archivo o en algún lugar después de la definición del modelo
+Clinica.associate = (models) => {
+  // Define tus asociaciones aquí
+  // Por ejemplo, si la Clínica tiene muchos Médicos:
+  Clinica.hasMany(models.Medico, { foreignKey: 'clinicaId' });
 };
+
+module.exports = Clinica;

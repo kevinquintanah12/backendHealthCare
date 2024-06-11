@@ -73,18 +73,20 @@ router.delete('/enfermedad/:id', verifyToken, async (req, res) => {
     }
 });
 
-router.get('/enfermedadByNombreOriginal/:nombreOriginal', verifyToken, async (req, res) => {
+router.post('/buscarEnfermedad', async (req, res) => {
     try {
-        const { nombreOriginal } = req.params;
-        const result = await enfermedadService.getEnfermedadByNombreOriginal(nombreOriginal);
-        if (result) {
-            res.status(200).json(result);
+        const nombreEnIngles = req.body.enfermedad;
+        const enfermedad = await enfermedadService.getEnfermedadByNombreOriginal(nombreEnIngles);
+        if (enfermedad) {
+            res.status(200).json(enfermedad);
         } else {
             res.status(404).json({ message: 'Enfermedad no encontrada' });
         }
     } catch (error) {
+        console.error('Error fetching disease by original name:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 });
+
 
 module.exports = router;

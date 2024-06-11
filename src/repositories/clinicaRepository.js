@@ -1,4 +1,4 @@
-const Clinica = require('../models').Clinica;
+const Clinica = require('../models/clinica');
 
 const saveClinica = async (clinicaData) => {
     return Clinica.create(clinicaData);
